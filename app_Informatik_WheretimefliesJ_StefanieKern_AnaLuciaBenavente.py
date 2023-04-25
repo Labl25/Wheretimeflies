@@ -10,7 +10,6 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 import time 
-import plotly.express as px
 import altair as alt
 import json
 
