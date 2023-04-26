@@ -7,7 +7,6 @@ Created on Mon Mar 20 18:32:14 2023
 
 import streamlit as st
 import pandas as pd
-from PIL import Image
 import time 
 import plotly.express as px
 
