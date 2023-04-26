@@ -7,12 +7,10 @@ Created on Mon Mar 20 18:32:14 2023
 
 import streamlit as st
 import pandas as pd
-import numpy as np
 from PIL import Image
 import time 
 import plotly.express as px
-import altair as alt
-import json
+
 
 st.set_page_config(
                     page_title="App_Informatik",
