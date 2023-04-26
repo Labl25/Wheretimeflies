@@ -158,13 +158,13 @@ if run_saved:
     # Create a barchart with older saved data (df4)
     chart_data = pd.DataFrame(df4)
     st.bar_chart(data=chart_data, 
-                 x =['Day and month'], 
+                 x ='Day and month', 
                  y = ['Sleep hours',
                      'Time spent eating',
                      'Time spent sitting',
                      'Time spent walking',
                      'Time spent working out',
-                     'Time spent on hobby']
+                     'Time spent on hobby']         
                  )
 
 
