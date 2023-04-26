@@ -2,6 +2,4 @@ pandas
 plotly
 pandas 
 time 
-plotly
-altair 
 json
