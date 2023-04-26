@@ -7,9 +7,24 @@ Created on Mon Mar 20 18:32:14 2023
 
 import streamlit as st
 import pandas as pd
-import time 
 import plotly.express as px
+import json
 
+DATA_FILE = "saved_data.json"
+
+# Funktion zum Laden der Adressliste aus einer JSON-Datei
+#def load_data():
+   # with open(DATA_FILE, "r") as file:
+        #data = json.load(file)
+    #return data
+
+# Funktion zum Speichern der Adressliste in einer JSON-Datei
+#def save_data(data):
+    #with open(DATA_FILE, "w") as file:
+        #json.dump(data,file,indent=8,ensure_ascii=False)
+
+# Laden der vorhandenen input daten
+#input_hours = load_data()
 
 st.set_page_config(
                     page_title="App_Informatik",
@@ -49,7 +64,7 @@ if "mdf" not in st.session_state:
 
 # Create input columns
 Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7 = st.columns(8) 
-date = Col0.date_input(label = "Day and month")
+date = Col0.date_input(label = "Day and month").strftime("%Y-%m-%d")
 sleep = Col1.number_input(label="Sleep hours", min_value = 0.0, max_value=24.0) 
 food = Col2.number_input(label="Time spent eating", min_value = 0.0, max_value=24.0)
 sitting = Col3.number_input(label="Time spent sitting", min_value = 0.0, max_value=24.0) 
@@ -93,16 +108,15 @@ df = pd.DataFrame({'Day and month': date,
                    )             
 
 # Df2 as table from df1, which adds every new user input to the datatable
-df1 = pd.concat([st.session_state.mdf, df], ignore_index= True) 
+df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
 
 # Stop date duplications. Only the last date input will be shown in dataframe
 df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
  
 # Redefine df1 and df2 ad df3    
 df3 = pd.DataFrame(df2) 
-SD = ('saved_data.csv')
 # read in existing and saved data
-df4 = pd.read_csv(SD)
+df4 = pd.read_json(DATA_FILE)
 
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
@@ -116,8 +130,8 @@ if run_today:
             df4 = pd.concat([df4, df3], ignore_index=True)
             df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         
-        # Save dataframe as csv
-        df4.to_csv(SD, index=False)
+        # Save dataframe as json
+        df4.to_json('saved_data.json', orient='records')
         
         # Show dataframe df = User input
         st.dataframe(df)
@@ -156,6 +170,8 @@ if run_saved:
 
 
 
+
+ 
     
 
 
