@@ -43,6 +43,7 @@ elif authentication_status == False:
 elif authentication_status == None:
     st.warning('Please enter your username and password')
     st.stop()
+    
 st.set_page_config(
                     page_title="App_Informatik",
                     page_icon="running",
