@@ -9,22 +9,40 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+from geocode import get_coordinates
+from jsonbin import load_key, save_key
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
+
 DATA_FILE = "saved_data.json"
 
-# Funktion zum Laden der Adressliste aus einer JSON-Datei
-#def load_data():
-   # with open(DATA_FILE, "r") as file:
-        #data = json.load(file)
-    #return data
+# -------- load secrets for jsonbin.io --------
+jsonbin_secrets = st.secrets["jsonbin"]
+api_key = jsonbin_secrets["api_key"]
+bin_id = jsonbin_secrets["bin_id"]
 
-# Funktion zum Speichern der Adressliste in einer JSON-Datei
-#def save_data(data):
-    #with open(DATA_FILE, "w") as file:
-        #json.dump(data,file,indent=8,ensure_ascii=False)
+# -------- user login --------
+with open('config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-# Laden der vorhandenen input daten
-#input_hours = load_data()
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+)
 
+fullname, authentication_status, username = authenticator.login('Login', 'main')
+
+if authentication_status == True:   # login successful
+    authenticator.logout('Logout', 'main')   # show logout button
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+    st.stop()
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
+    st.stop()
 st.set_page_config(
                     page_title="App_Informatik",
                     page_icon="running",
