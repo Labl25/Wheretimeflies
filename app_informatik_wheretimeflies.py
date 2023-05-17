@@ -14,7 +14,6 @@ from jsonbin import load_key#, save_key
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-import requests
 
 
 DATA_FILE = "saved_data.json"
@@ -29,25 +28,6 @@ st.set_page_config(
 jsonbin_secrets = st.secrets["jsonbin"]
 api_key = jsonbin_secrets["api_key"]
 bin_id = jsonbin_secrets["bin_id"]
-
-
-######
-
-BIN_API_URL = r'https://api.jsonbin.io/v3/b'
-def save_key(api_key, bin_id, key, data):
-    """
-    Save key to bin
-    """
-    url = BIN_API_URL + '/' + bin_id
-    headers = {'X-Master-Key': api_key, 'Content-Type': 'application/json'}
-    res = requests.get(url, headers=headers).json()
-    res = res['record']
-    if type(res) != dict:
-        res = {key:data}  # generate new dict
-    else:
-        res[key] = data
-    res = requests.put(url, headers=headers, json=res).json()
-    return res
 
 # -------- user login --------
 with open('config.yaml') as file:
