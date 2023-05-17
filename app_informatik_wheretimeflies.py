@@ -142,7 +142,7 @@ df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')
 df3 = pd.DataFrame(df2) 
 # read in existing and saved data
 df4 = pd.read_json(DATA_FILE)
-st.write(session_state)
+st.write(st.session_state)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
