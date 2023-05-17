@@ -134,6 +134,7 @@ df3 = pd.DataFrame(df2)
 d4f=load_key(api_key, bin_id, username)
 st.write(st.session_state)
 if run_today:
+    d4f=load_key(api_key, bin_id, username)
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
         # Check if df4 is empty or not
