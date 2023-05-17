@@ -15,6 +15,14 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
+def Zählung_Dictionary():
+    #Regeneriert die Zählung in session_state zu Dictionary
+    Dictionary = {}
+    zaehler = ['Day and month', 'Sleep hours', 'Time spent eating', 'Time spent sitting', 'Time spent walking', 'Time spent working out','Time spent on hobby']                                       ]
+    for key in zaehler:
+        Dictionary[key]=st.session_state[key]
+    return Dictionary
+
 
 DATA_FILE = "saved_data.json"
 st.set_page_config(
@@ -137,6 +145,7 @@ df4 = pd.read_json(DATA_FILE)
 
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
+    st.write(Zählung_Dictionary())
     if total_hours <= 24:
         # Check if df4 is empty or not
         if df4.empty:
