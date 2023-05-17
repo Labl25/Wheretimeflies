@@ -142,12 +142,11 @@ df4 =pd.DataFrame(df4)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
-        #print(type(df4))
         # Check if df4 is empty or not
-        #if df4.empty:
+        if df4 == None:
             # If it's empty, assign the new input data to it
-            #df4 = df3.copy()
-       # else:
+            df4 = df3.copy()
+        else:
             # If it's not empty, append the new input data to it while dropping duplicates
         df4 = df4.append(df3, ignore_index=True)
         df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
