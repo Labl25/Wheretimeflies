@@ -109,9 +109,9 @@ if active < 0.35:
 Col0, Col1= st.columns(2) 
 # Show and submit button defined as run and show all data as run1 
 with Col0:
-run_today = st.button("Show and submit today's data") 
+  run_today = st.button("Show and submit today's data") 
 with Col1:
-run_saved = st.button('Show all data', key = 'all_data')
+  run_saved = st.button('Show all data', key = 'all_data')
 
 #Subheader of dataframe table
 st.subheader('Input data table')
