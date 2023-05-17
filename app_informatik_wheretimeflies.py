@@ -121,7 +121,8 @@ df = pd.DataFrame({'Day and month': date,
                    )             
 
 # Df2 as table from df1, which adds every new user input to the datatable
-df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
+#df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
+df1 = df
 
 # Stop date duplications. Only the last date input will be shown in dataframe
 df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
