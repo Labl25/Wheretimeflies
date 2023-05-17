@@ -114,7 +114,7 @@ df = {'Day and month': date,
                              
 
 
-df1=pd.DataFrame(df,index = [date])
+#df1=pd.DataFrame(df,index = [date])
 #df=pd.DataFrame(df1,index = [date])
 
 # Df2 as table from df1, which adds every new user input to the datatable
@@ -132,7 +132,7 @@ df4 = load_key(api_key, bin_id, username)
 #df4 =pd.DataFrame(df4)
 
 
-if run_today:
+if run_today !=0:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
         # Check if df4 is empty or not
@@ -161,7 +161,7 @@ if run_today:
     else:
         st.warning("A day does not have more than 24 hours!") 
  
-if run_saved:
+if run_saved !=0:
     # Show df4 dataframe
     df4 = load_key(api_key, bin_id, username)
     st.dataframe(df4)
