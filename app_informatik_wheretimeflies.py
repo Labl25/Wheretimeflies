@@ -128,15 +128,13 @@ df = {'Day and month': date,
 #df3 = pd.DataFrame(df2) 
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
-df4 = load_key(api_key, bin_id, username)
-if df4==None:
-  df4={}
 #df4 =pd.DataFrame(df4)
 
 
 if run_today !=0:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
+      df4 = load_key(api_key, bin_id, username)
         # Check if df4 is empty or not
         #if df4.empty:
             # If it's empty, assign the new input data to it
@@ -146,7 +144,8 @@ if run_today !=0:
         ##df4 = pd.concat([df4, df3], ignore_index=True)
         ##df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         st.write(type(df4))
-        df4=df.update(df4)
+        df4=df.append(df4)
+        df4=dict(df4)
         save_key(api_key, bin_id, username, df4)
         df4 = load_key(api_key, bin_id, username)
         # Show dataframe df = User input
