@@ -128,7 +128,7 @@ df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')
 df3 = pd.DataFrame(df2) 
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
-#df4 = load_key(api_key, bin_id, username)
+df4 = load_key(api_key, bin_id, username)
 #df4 =pd.DataFrame(df4)
 
 
