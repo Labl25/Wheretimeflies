@@ -146,8 +146,8 @@ if run_today:
             #df4 = df3.copy()
        # else:
             # If it's not empty, append the new input data to it while dropping duplicates
-            df4 = pd.concat([df4, df3], ignore_index=True)
-            df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
+        df4 = pd.concat([df4, df3], ignore_index=True)
+        df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
 
         # Save dataframe
         #df4.to_json(DATA_FILE, orient='records')
