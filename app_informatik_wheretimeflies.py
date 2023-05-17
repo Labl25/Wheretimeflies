@@ -76,7 +76,7 @@ sitting = Col3.number_input(label="Time spent sitting", min_value = 0.0, max_val
 walking = Col4.number_input(label="Time spent walking", min_value = 0.0, max_value=24.0) 
 workout = Col5.number_input(label="Time spent working out", min_value = 0.0, max_value=24.0)
 hobby = Col6.number_input(label="Time spent on hobby", min_value = 0.0, max_value=24.0)
-st.write(type(hobby))
+
    
 # Calculate total_hours and not_accounted_for
 total_hours = sleep + food + sitting + walking + workout + hobby
@@ -99,16 +99,24 @@ if active < 0.35:
 st.subheader('Input data table')
 
 # Dataframe
-df = {'Day and month': date, 
-                   'Sleep hours': sleep,
-                   'Time spent eating': food,
-                   'Time spent sitting': sitting,
-                   'Time spent walking': walking,
-                   'Time spent working out': workout,
-                   'Time spent on hobby': hobby} 
+#df = {'Day and month': date, 
+ #                  'Sleep hours': sleep,
+  #                 'Time spent eating': food,
+   #                'Time spent sitting': sitting,
+    #               'Time spent walking': walking,
+     #              'Time spent working out': workout,
+      #             'Time spent on hobby': hobby}
+
+df = pd.DataFrame({'Day and month': [date],
+                   'Sleep hours': [sleep],
+                   'Time spent eating': [food],
+                   'Time spent sitting': [sitting],
+                   'Time spent walking': [walking],
+                   'Time spent working out': [workout],
+                   'Time spent on hobby': [hobby]})
                    
                              
-
+st.write(df)
 
 #df1=pd.DataFrame(df,index = [date])
 #df=pd.DataFrame(df1,index = [date])
