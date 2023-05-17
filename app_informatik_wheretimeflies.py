@@ -66,20 +66,6 @@ st.markdown('_Time spent on hobby_: Time spent doing a non high active free-time
 st.markdown('Every category can be left blank. However, the total of entered hours cannot exceed 24h.')
 st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
 
-# First step to store inputs of dataframe
-#if "mdf" not in st.session_state:
- #   st.session_state.mdf = pd.DataFrame(columns=
- #                                      [
-  #                                          'Day and month', 
-   #                                         'Sleep hours', 
-    #                                        'Time spent eating', 
-     #                                       'Time spent sitting', 
-      #                                      'Time spent walking', 
-       #                                     'Time spent working out',
-        #                                    'Time spent on hobby'
-             #                            ]
-            #                            )
-
 # Create input columns
 Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7 = st.columns(8) 
 date = Col0.date_input(label = "Day and month").strftime("%Y-%m-%d")
@@ -128,8 +114,8 @@ df = {'Day and month': date,
                              
 save_key(api_key, bin_id, username, df)
 df1= load_key(api_key, bin_id, username)
-df1=pd.DataFrame(df1,index = [date])
 df=pd.DataFrame(df1,index = [date])
+#df=pd.DataFrame(df1,index = [date])
 
 # Df2 as table from df1, which adds every new user input to the datatable
 #df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
