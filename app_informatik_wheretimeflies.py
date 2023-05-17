@@ -134,7 +134,7 @@ df = {'Day and month': date,
 if run_today !=0:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
-      df4 = load_key(api_key, bin_id, username)
+        df4 = load_key(api_key, bin_id, username)
         # Check if df4 is empty or not
         #if df4.empty:
             # If it's empty, assign the new input data to it
