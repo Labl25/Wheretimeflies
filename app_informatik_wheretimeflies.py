@@ -127,7 +127,7 @@ df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')
 # Redefine df1 and df2 ad df3    
 df3 = pd.DataFrame(df2) 
 # read in existing and saved data
-df4 = pd.read_json(DATA_FILE)
+#df4 = pd.read_json(DATA_FILE)
 #df4 = load_key(api_key, bin_id, username)
 #df4 =pd.DataFrame(df4)
 
@@ -145,7 +145,7 @@ if run_today:
             df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         #st.write(df4)
         # Save dataframe
-        df4.to_json(DATA_FILE, orient='records')
+        #df4.to_json(DATA_FILE, orient='records')
         #save_key(api_key, bin_id, username, df4)
         #save_data(api_key, bin_id, df4)
         
