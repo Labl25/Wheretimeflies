@@ -108,8 +108,8 @@ if active < 0.35:
 # Arrange 2 buttons into 2 columns
 Col0, Col1= st.columns(2) 
 # Show and submit button defined as run and show all data as run1      
-run_today = Col0.button("Show and submit today's data") 
-run_saved = Col1.button('Show all data', key = 'all_data')
+run_today = Col0.st.button("Show and submit today's data") 
+run_saved = Col1.st.button('Show all data', key = 'all_data')
 
 #Subheader of dataframe table
 st.subheader('Input data table')
@@ -152,7 +152,7 @@ if run_today:
             df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         #st.write(df4)
         # Save dataframe
-        #df4.to_json(DATA_FILE, orient='records')
+        df4.to_json(DATA_FILE, orient='records')
         #save_key(api_key, bin_id, username, df4)
         #save_data(api_key, bin_id, df4)
         
