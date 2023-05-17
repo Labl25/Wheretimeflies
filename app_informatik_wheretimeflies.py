@@ -112,20 +112,20 @@ df = {'Day and month': date,
                    'Time spent on hobby': hobby} 
                    
                              
-save_key(api_key, bin_id, username, df)
-df1= load_key(api_key, bin_id, username)
-df1=pd.DataFrame(df1,index = [date])
-df=pd.DataFrame(df1,index = [date])
+
+
+df1=pd.DataFrame(df,index = [date])
+#df=pd.DataFrame(df1,index = [date])
 
 # Df2 as table from df1, which adds every new user input to the datatable
 #df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
 
 
 # Stop date duplications. Only the last date input will be shown in dataframe
-df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
+#df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
  
 # Redefine df1 and df2 ad df3    
-df3 = pd.DataFrame(df2) 
+#df3 = pd.DataFrame(df2) 
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
 df4 = load_key(api_key, bin_id, username)
@@ -141,9 +141,10 @@ if run_today:
             #df4 = df3.copy()
         #else:
             # If it's not empty, append the new input data to it while dropping duplicates
-        df4 = pd.concat([df4, df3], ignore_index=True)
-        df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
-        
+        ##df4 = pd.concat([df4, df3], ignore_index=True)
+        ##df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
+        save_key(api_key, bin_id, username, df4)
+        df4 = load_key(api_key, bin_id, username)
         # Show dataframe df = User input
         st.dataframe(df)
         
@@ -152,7 +153,7 @@ if run_today:
         st.text('Percentage of time spent in each category today')
         
         # Create a piechart with df as dataframe
-        aggregated_data = df.drop('Day and month', axis=1).sum()
+        aggregated_data = df1.drop('Day and month', axis=1).sum()
         fig = px.pie(aggregated_data, values=aggregated_data.values, names=aggregated_data.index)
         st.plotly_chart(fig)
         
