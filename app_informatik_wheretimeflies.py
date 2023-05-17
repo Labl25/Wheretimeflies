@@ -161,6 +161,7 @@ if run_today:
  
 if run_saved:
     # Show df4 dataframe
+    df4 = load_key(api_key, bin_id, username)
     st.dataframe(df4)
     
     # Descriptive title and text for chart from user input dataframe
