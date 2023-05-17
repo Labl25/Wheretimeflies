@@ -16,6 +16,12 @@ from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
 DATA_FILE = "saved_data.json"
+st.set_page_config(
+                    page_title="App_Informatik",
+                    page_icon="running",
+                    layout="wide",
+                    initial_sidebar_state="expanded"
+                    )
 
 # -------- load secrets for jsonbin.io --------
 jsonbin_secrets = st.secrets["jsonbin"]
@@ -43,13 +49,6 @@ elif authentication_status == False:
 elif authentication_status == None:
     st.warning('Please enter your username and password')
     st.stop()
-    
-st.set_page_config(
-                    page_title="App_Informatik",
-                    page_icon="running",
-                    layout="wide",
-                    initial_sidebar_state="expanded"
-                    )
 
 
 st.title('Where time flies')
