@@ -129,6 +129,7 @@ df1=pd.DataFrame(df,index = [date])
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
 df4 = load_key(api_key, bin_id, username)
+df4=pd.DataFrame(df4,index = [date])
 #df4 =pd.DataFrame(df4)
 
 
