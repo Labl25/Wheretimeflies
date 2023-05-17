@@ -129,6 +129,8 @@ df = {'Day and month': date,
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
 df4 = load_key(api_key, bin_id, username)
+if df4==None:
+  df4={}
 #df4 =pd.DataFrame(df4)
 
 
