@@ -67,16 +67,16 @@ st.markdown('Every category can be left blank. However, the total of entered hou
 st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
 
 # First step to store inputs of dataframe
-if "mdf" not in st.session_state:
-    st.session_state.mdf = pd.DataFrame(columns=
-                                       [
-                                            'Day and month', 
-                                            'Sleep hours', 
-                                            'Time spent eating', 
-                                            'Time spent sitting', 
-                                            'Time spent walking', 
-                                            'Time spent working out',
-                                            'Time spent on hobby'
+#if "mdf" not in st.session_state:
+ #   st.session_state.mdf = pd.DataFrame(columns=
+ #                                      [
+  #                                          'Day and month', 
+   #                                         'Sleep hours', 
+    #                                        'Time spent eating', 
+     #                                       'Time spent sitting', 
+      #                                      'Time spent walking', 
+       #                                     'Time spent working out',
+        #                                    'Time spent on hobby'
                                          ]
                                         )
 
@@ -117,18 +117,22 @@ with Col1:
 st.subheader('Input data table')
 
 # Dataframe
-df = pd.DataFrame({'Day and month': date, 
+df = {'Day and month': date, 
                    'Sleep hours': sleep,
                    'Time spent eating': food,
                    'Time spent sitting': sitting,
                    'Time spent walking': walking,
                    'Time spent working out': workout,
-                   'Time spent on hobby': hobby}, 
-                   index = [date]
-                   )             
+                   'Time spent on hobby': hobby} 
+                   
+                             
+save_key(api_key, bin_id, username, df)
+df1= load_key(api_key, bin_id, username)
+df1=pd.DataFrame(df1,index = [date])
 
 # Df2 as table from df1, which adds every new user input to the datatable
-df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
+#df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
+
 
 # Stop date duplications. Only the last date input will be shown in dataframe
 df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
