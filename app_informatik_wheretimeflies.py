@@ -21,7 +21,7 @@ def Zählung_Dictionary():
     zaehler = ['Day and month', 'Sleep hours', 'Time spent eating', 'Time spent sitting', 'Time spent walking', 'Time spent working out','Time spent on hobby']                                      
     for key in zaehler:
         Dictionary[key]=st.session_state[key]
-    return Dictionary
+    return Dictionary
 
 
 DATA_FILE = "saved_data.json"
