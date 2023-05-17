@@ -153,7 +153,7 @@ with Col0:
         st.write(df4)
         df=pd.DataFrame(df,index=False)
         df4=pd.DataFrame(df4,index=False)
-        df4=df.append(df4)
+        df.append(df4)
         df4=dict(df4)
         save_key(api_key, bin_id, username, df4)
         df4 = load_key(api_key, bin_id, username)
