@@ -135,6 +135,7 @@ df3 = pd.DataFrame(df2)
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
 df4 = load_key(api_key, bin_id, username)
+st.write(df4)
 
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
