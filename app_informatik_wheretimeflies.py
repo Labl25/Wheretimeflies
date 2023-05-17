@@ -91,13 +91,7 @@ with Col7:
 if active < 0.35: 
     st.warning("WHO recomends an adult person to be active for at least for 21 min per day") 
     
-# Arrange 2 buttons into 2 columns
-Col0, Col1= st.columns(2) 
-# Show and submit button defined as run and show all data as run1 
-with Col0:
-  run_today = st.button("Show and submit today's data") 
-with Col1:
-  run_saved = st.button('Show all data', key = 'all_data')
+
 
 #Subheader of dataframe table
 st.subheader('Input data table')
@@ -130,8 +124,11 @@ df = {'Day and month': date,
 #df4 = pd.read_json(DATA_FILE)
 #df4 =pd.DataFrame(df4)
 
-
-if run_today !=0:
+# Arrange 2 buttons into 2 columns
+Col0, Col1= st.columns(2) 
+# Show and submit button defined as run and show all data as run1 
+with Col0:
+  st.button("Show and submit today's data"): 
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
         df4 = load_key(api_key, bin_id, username)
@@ -162,8 +159,8 @@ if run_today !=0:
         
     else:
         st.warning("A day does not have more than 24 hours!") 
- 
-if run_saved !=0:
+with Col1:
+  st.button('Show all data', key = 'all_data'):
     # Show df4 dataframe
     df4 = load_key(api_key, bin_id, username)
     st.dataframe(df4)
