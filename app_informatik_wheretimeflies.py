@@ -16,6 +16,20 @@ from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
 
+DATA_FILE = "saved_data.json"
+st.set_page_config(
+                    page_title="App_Informatik",
+                    page_icon="running",
+                    layout="wide",
+                    initial_sidebar_state="expanded"
+                    )
+
+# -------- load secrets for jsonbin.io --------
+jsonbin_secrets = st.secrets["jsonbin"]
+api_key = jsonbin_secrets["api_key"]
+bin_id = jsonbin_secrets["bin_id"]
+
+
 ######
 def save_key(api_key, bin_id, key, data):
     """
@@ -31,19 +45,6 @@ def save_key(api_key, bin_id, key, data):
         res[key] = data
     res = requests.put(url, headers=headers, json=res).json()
     return res
-
-DATA_FILE = "saved_data.json"
-st.set_page_config(
-                    page_title="App_Informatik",
-                    page_icon="running",
-                    layout="wide",
-                    initial_sidebar_state="expanded"
-                    )
-
-# -------- load secrets for jsonbin.io --------
-jsonbin_secrets = st.secrets["jsonbin"]
-api_key = jsonbin_secrets["api_key"]
-bin_id = jsonbin_secrets["bin_id"]
 
 # -------- user login --------
 with open('config.yaml') as file:
