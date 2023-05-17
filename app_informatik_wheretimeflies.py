@@ -149,6 +149,7 @@ if run_today:
             df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
 
         # Save dataframe
+        #df4.to_json(DATA_FILE, orient='records')
         save_key(api_key, bin_id, username, df4)
         
         # Show dataframe df = User input
