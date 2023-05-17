@@ -133,7 +133,7 @@ st.write(df)
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
 #df4 =pd.DataFrame(df4)
-
+df4 = load_key(api_key, bin_id, username)
 # Arrange 2 buttons into 2 columns
 Col0, Col1= st.columns(2) 
 # Show and submit button defined as run and show all data as run1 
@@ -173,7 +173,6 @@ with Col0:
 with Col1:
   if st.button('Show all data', key = 'all_data'):
     # Show df4 dataframe
-    df4 = load_key(api_key, bin_id, username)
     st.dataframe(df4)
     
     # Descriptive title and text for chart from user input dataframe
