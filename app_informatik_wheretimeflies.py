@@ -130,7 +130,8 @@ df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')
 # Redefine df1 and df2 ad df3    
 df3 = pd.DataFrame(df2) 
 # read in existing and saved data
-df4 = pd.read_json(DATA_FILE)
+#df4 = pd.read_json(DATA_FILE)
+d4f=load_key(api_key, bin_id, username)
 st.write(st.session_state)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
@@ -148,7 +149,6 @@ if run_today:
         df4.to_json(DATA_FILE, orient='records')
         #save_key(api_key, bin_id, username, df4)
         # Show dataframe df = User input
-        #df=load_key(api_key, bin_id, username)
         st.dataframe(df)
         
         # Descriptive title and text for chart from user input dataframe
