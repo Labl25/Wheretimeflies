@@ -134,23 +134,22 @@ df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')
 df3 = pd.DataFrame(df2) 
 # read in existing and saved data
 #df4 = pd.read_json(DATA_FILE)
-df4= load_key(api_key, bin_id, username)
+df4 = load_key(api_key, bin_id, username)
 
 if run_today:
-    # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
+    # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
         # Check if df4 is empty or not
         if df4.empty:
             # If it's empty, assign the new input data to it
             df4 = df3.copy()
-       # else:
+        else:
             # If it's not empty, append the new input data to it while dropping duplicates
-        df4 = pd.concat([df, df3], ignore_index=True)
-        df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
-        
-        # Save dataframe as json
-        #df4.to_json('saved_data.json', orient='records')
-        save_key(api_key, bin_id, key, df4)
+            df4 = pd.concat([df4, df3], ignore_index=True)
+            df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
+
+        # Save dataframe
+        save_key(api_key, bin_id, username, df4)
         
         # Show dataframe df = User input
         st.dataframe(df)
