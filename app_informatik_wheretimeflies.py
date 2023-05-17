@@ -141,8 +141,8 @@ if run_today:
             #df4 = df3.copy()
         #else:
             # If it's not empty, append the new input data to it while dropping duplicates
-         df4 = pd.concat([df4, df3], ignore_index=True)
-         df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
+        df4 = pd.concat([df4, df3], ignore_index=True)
+        df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         
         # Show dataframe df = User input
         st.dataframe(df)
