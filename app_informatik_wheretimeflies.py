@@ -125,7 +125,7 @@ df = pd.DataFrame({'Day and month': date,
                    )             
 
 # Df2 as table from df1, which adds every new user input to the datatable
-df1 = pd.append([st.session_state.mdf, df], ignore_index= False) 
+df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
 
 # Stop date duplications. Only the last date input will be shown in dataframe
 df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
@@ -140,12 +140,12 @@ if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
         # Check if df4 is empty or not
-       # if df4.empty:
+        if df4.empty:
             # If it's empty, assign the new input data to it
-            #df4 = df3.copy()
+            df4 = df3.copy()
        # else:
             # If it's not empty, append the new input data to it while dropping duplicates
-        df4 = pd.append([df, df3], ignore_index=True)
+        df4 = pd.concat([df, df3], ignore_index=True)
         df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         
         # Save dataframe as json
