@@ -10,10 +10,27 @@ import pandas as pd
 import plotly.express as px
 
 from geocode import get_coordinates
-from jsonbin import load_key, save_key
+from jsonbin import load_key, #save_key
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
+
+
+######
+def save_key(api_key, bin_id, key, data):
+    """
+    Save key to bin
+    """
+    url = BIN_API_URL + '/' + bin_id
+    headers = {'X-Master-Key': api_key, 'Content-Type': 'application/json'}
+    res = requests.get(url, headers=headers).json()
+    res = res['record']
+    if type(res) != dict:
+        res = {key:data}  # generate new dict
+    else:
+        res[key] = data
+    res = requests.put(url, headers=headers, json=res).json()
+    return res
 
 DATA_FILE = "saved_data.json"
 st.set_page_config(
@@ -149,10 +166,10 @@ if run_today:
             # If it's not empty, append the new input data to it while dropping duplicates
         df4 = df4.append(df3, ignore_index=True)
         df4 = df4.drop_duplicates(subset=['Day and month'], keep='last')
-        st.write(dict(df4))
+
         # Save dataframe
         #df4.to_json(DATA_FILE, orient='records')
-        save_key(api_key, bin_id, username, df4)
+        save_key(api_key, bin_id, username, dict(df4))
         #save_data(api_key, bin_id, df4)
         
         # Show dataframe df = User input
