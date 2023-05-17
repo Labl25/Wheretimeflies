@@ -137,7 +137,7 @@ if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
         # Check if df4 is empty or not
-        if df4.empty:
+        if len(df4) == 0:
             # If it's empty, assign the new input data to it
             df4 = df3.copy()
         else:
