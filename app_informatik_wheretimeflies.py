@@ -143,7 +143,7 @@ if run_today !=0:
             # If it's not empty, append the new input data to it while dropping duplicates
         ##df4 = pd.concat([df4, df3], ignore_index=True)
         ##df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
-        df4=df4.append(df)
+        df4=df4.update(df)
         save_key(api_key, bin_id, username, df4)
         df4 = load_key(api_key, bin_id, username)
         # Show dataframe df = User input
