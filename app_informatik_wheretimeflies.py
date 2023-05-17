@@ -128,7 +128,7 @@ df = {'Day and month': date,
 Col0, Col1= st.columns(2) 
 # Show and submit button defined as run and show all data as run1 
 with Col0:
-  st.button("Show and submit today's data"):
+  if st.button("Show and submit today's data"):
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
         df4 = load_key(api_key, bin_id, username)
@@ -160,7 +160,7 @@ with Col0:
     else:
         st.warning("A day does not have more than 24 hours!") 
 with Col1:
-  st.button('Show all data', key = 'all_data'):
+  if st.button('Show all data', key = 'all_data'):
     # Show df4 dataframe
     df4 = load_key(api_key, bin_id, username)
     st.dataframe(df4)
