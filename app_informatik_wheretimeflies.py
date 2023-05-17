@@ -136,13 +136,13 @@ if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe; otherwise, a warning will pop up.
     if total_hours <= 24:
         # Check if df4 is empty or not
-        if df4.empty:
+        #if df4.empty:
             # If it's empty, assign the new input data to it
-            df4 = df3.copy()
-        else:
+            #df4 = df3.copy()
+        #else:
             # If it's not empty, append the new input data to it while dropping duplicates
-            df4 = pd.concat([df4, df3], ignore_index=True)
-            df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
+         df4 = pd.concat([df4, df3], ignore_index=True)
+         df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         
         # Show dataframe df = User input
         st.dataframe(df)
