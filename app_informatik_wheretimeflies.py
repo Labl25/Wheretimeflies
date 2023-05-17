@@ -146,8 +146,9 @@ if run_today:
         
         # Save dataframe as json
         df4.to_json(DATA_FILE, orient='records')
-        
+        save_key(api_key, bin_id, username, df4)
         # Show dataframe df = User input
+        df=load_key(api_key, bin_id, username)
         st.dataframe(df)
         
         # Descriptive title and text for chart from user input dataframe
