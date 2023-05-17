@@ -129,6 +129,7 @@ df = {'Day and month': date,
 save_key(api_key, bin_id, username, df)
 df1= load_key(api_key, bin_id, username)
 df1=pd.DataFrame(df1,index = [date])
+df=pd.DataFrame(df1,index = [date])
 
 # Df2 as table from df1, which adds every new user input to the datatable
 #df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
