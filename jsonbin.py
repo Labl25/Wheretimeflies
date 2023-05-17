@@ -1,5 +1,4 @@
 import requests
-import json
 
 BIN_API_URL = r'https://api.jsonbin.io/v3/b'
 
