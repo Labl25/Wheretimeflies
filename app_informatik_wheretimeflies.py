@@ -18,7 +18,7 @@ import streamlit_authenticator as stauth
 def Zählung_Dictionary():
     #Regeneriert die Zählung in session_state zu Dictionary
     Dictionary = {}
-    zaehler = ['Day and month', 'Sleep hours', 'Time spent eating', 'Time spent sitting', 'Time spent walking', 'Time spent working out','Time spent on hobby']                                       ]
+    zaehler = ['Day and month', 'Sleep hours', 'Time spent eating', 'Time spent sitting', 'Time spent walking', 'Time spent working out','Time spent on hobby']                                      
     for key in zaehler:
         Dictionary[key]=st.session_state[key]
     return Dictionary
