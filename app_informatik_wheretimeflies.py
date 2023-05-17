@@ -31,6 +31,8 @@ bin_id = jsonbin_secrets["bin_id"]
 
 
 ######
+
+BIN_API_URL = r'https://api.jsonbin.io/v3/b'
 def save_key(api_key, bin_id, key, data):
     """
     Save key to bin
