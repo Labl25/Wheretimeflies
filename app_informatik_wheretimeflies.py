@@ -77,8 +77,8 @@ st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per da
       #                                      'Time spent walking', 
        #                                     'Time spent working out',
         #                                    'Time spent on hobby'
-                                         ]
-                                        )
+             #                            ]
+            #                            )
 
 # Create input columns
 Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7 = st.columns(8) 
