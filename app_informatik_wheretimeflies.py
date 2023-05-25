@@ -155,7 +155,7 @@ if run_saved:
         st.dataframe(df1) 
         #Descriptive title and text for chart from user input dataframe
         st.subheader('Graphical summary')
-        st.text('Graphical overview of daily activity by date _in hours_')
+        st.markdown('Graphical overview of daily activity by date _in hours_')
     #Create a barchart with older saved data (df4)
         chart_data = pd.DataFrame(df1)
         st.bar_chart(data= chart_data, x ='Day and month', 
