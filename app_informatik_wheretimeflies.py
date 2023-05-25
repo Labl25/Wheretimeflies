@@ -196,7 +196,8 @@ with tab4:
             st.error(res['message'])
         #new_data to df dataframe
     if Show_older_notes:
-        df2 = pd.DataFrame(new_notes, index = [date])
+        accu_notes = load_key(api_key, bin_id, username)
+        df2 = pd.DataFrame(accu_notes, index = [date])
         st.dataframe(df2)
 
 
