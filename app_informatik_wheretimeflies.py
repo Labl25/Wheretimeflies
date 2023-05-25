@@ -159,8 +159,8 @@ if run_saved:
                      'Time spent working out',
                      'Time spent on hobby']
                  )
-
- if delete:
+    
+if delete:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
     
