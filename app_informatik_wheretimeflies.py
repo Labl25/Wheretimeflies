@@ -142,15 +142,13 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved: 
-    if st.button("Delete")
-    accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data) 
-    accu_data.pop()
-    res = save_key(api_key, bin_id, username, accu_data)
+    if st.button("Delete"):
+        accu_data = load_key(api_key, bin_id, username)
+        df1 = pd.DataFrame(accu_data) 
+        accu_data.pop()
+        res = save_key(api_key, bin_id, username, accu_data)
     
-    
-    
-    
+     
     # Descriptive title and text for chart from user input dataframe
     st.subheader('Yearly graphical display')
     st.text('Time spent for each category with latest input')
