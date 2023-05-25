@@ -147,6 +147,22 @@ if run_saved:
     selected_rows = []
     checkboxes = []
     for index, row in df1.iterrows():
+        checkbox_placeholder = st.empty()
+        checkbox = checkbox_placeholder.checkbox("", key=index)
+        checkboxes.append(checkbox)
+        if checkbox:
+            selected_rows.append(row)
+        checkbox_placeholder.empty()  # Clear the placeholder after rendering the checkbox
+    
+    st.dataframe(df1)
+    
+    if st.button("Delete Selected"):
+        df1 = df1[~df1.index.isin(selected_rows)]
+        accu_data = df1.to_dict(orient='records')
+        res = save_key(api_key, bin_id, username, accu_data)
+        st.write("Selected rows deleted successfully.")selected_rows = []
+    checkboxes = []
+    for index, row in df1.iterrows():
         checkbox = st.checkbox("", key=index)
         checkboxes.append(checkbox)
         if checkbox:
