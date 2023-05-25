@@ -8,7 +8,6 @@ Created on Mon Mar 20 18:32:14 2023
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from streamlit_aggrid import AgGrid
 
 from geocode import get_coordinates
 from jsonbin import load_key, save_key
@@ -102,10 +101,11 @@ if active < 0.35:
     st.warning("WHO recomends an adult person to be active for at least for 21 min per day") 
     
 # Arrange 2 buttons into 2 columns
-Col0, Col1= st.columns(2) 
+Col0, Col1, Col2= st.columns(3) 
 # Show and submit button defined as run and show all data as run1      
 run_today = Col0.button("Show and submit today's data") 
 run_saved = Col1.button('Show all data', key = 'all_data')
+delete = Col2.button('Delete selected data', key = 'selected' )
 
 #Subheader of dataframe table
 st.subheader('Input data table')
@@ -129,7 +129,7 @@ if run_today:
         res = save_key(api_key, bin_id, username, accu_data)
         
         df = pd.DataFrame(new_data, index = [date])
-        st.table(df)
+        st.dataframe(df)
         # Descriptive title and text for chart from user input dataframe
         st.subheader('Pie chart of today')
         st.text('Percentage of time spent in each category today')
@@ -145,34 +145,21 @@ if run_today:
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
+    st.dataframe(df1)
+    #Descriptive title and text for chart from user input dataframe
+    st.subheader('Yearly graphical display')
+    st.text('Time spent for each category with latest input')
     
-    grid_response = AgGrid(df1, editable=False, enable_pagination=True, fit_columns_on_grid_load=True, key='grid')
-    selected_rows = grid_response['selected_rows']
-    
-    if st.button("Delete Selected"):
-        df1 = df1.drop(selected_rows.index)
-        accu_data = df1.to_dict(orient='records')
-        res = save_key(api_key, bin_id, username, accu_data)
-        st.write("Selected rows deleted successfully.")
-    
-  
-   
-    
-     
-    # Descriptive title and text for chart from user input dataframe
-    #st.subheader('Yearly graphical display')
-    #st.text('Time spent for each category with latest input')
-    
-    # Create a barchart with older saved data (df4)
-    #chart_data = pd.DataFrame(df1)
-    #st.bar_chart(data= chart_data, x ='Day and month', 
-                # y = ['Sleep hours',
-                    # 'Time spent eating',
-                    # 'Time spent sitting',
-                    # 'Time spent walking',
-                    # 'Time spent working out',
-                     #'Time spent on hobby']
-                 #)
+    Create a barchart with older saved data (df4)
+    chart_data = pd.DataFrame(df1)
+    st.bar_chart(data= chart_data, x ='Day and month', 
+                 y = ['Sleep hours',
+                     'Time spent eating',
+                     'Time spent sitting',
+                     'Time spent walking',
+                     'Time spent working out',
+                     'Time spent on hobby']
+                 )
 
  
     
