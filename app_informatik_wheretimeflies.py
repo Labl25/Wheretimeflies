@@ -142,9 +142,10 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved: 
+    accu_data = load_key(api_key, bin_id, username)
+    df1 = pd.DataFrame(accu_data)
     if st.button("Delete"):
         accu_data = load_key(api_key, bin_id, username)
-        df1 = pd.DataFrame(accu_data) 
         accu_data.pop()
         res = save_key(api_key, bin_id, username, accu_data)
     
