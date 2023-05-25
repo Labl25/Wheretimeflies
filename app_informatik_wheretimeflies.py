@@ -8,7 +8,6 @@ Created on Mon Mar 20 18:32:14 2023
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
 from geocode import get_coordinates
 from jsonbin import load_key, save_key
 import yaml
@@ -150,7 +149,7 @@ if run_saved:
     st.subheader('Yearly graphical display')
     st.text('Time spent for each category with latest input')
     
-    Create a barchart with older saved data (df4)
+    #Create a barchart with older saved data (df4)
     chart_data = pd.DataFrame(df1)
     st.bar_chart(data= chart_data, x ='Day and month', 
                  y = ['Sleep hours',
