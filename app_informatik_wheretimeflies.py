@@ -126,6 +126,8 @@ if run_today:
         accu_data.append(new_data)
         #accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
         res = save_key(api_key, bin_id, username, accu_data)
+        if 'message' in res:
+            st.error(res['message'])
         
         df = pd.DataFrame(new_data, index = [date])
         st.dataframe(df)
@@ -162,18 +164,11 @@ if run_saved:
     
 if delete:
     accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data)
+    accu_data.pop()
+    res = save_key(api_key, bin_id, username, accu_data)
     
-    if not df1.empty:
-        st.dataframe(df1)
-        
-        if st.button("Delete Last Row"):
-            accu_data = load_key(api_key, bin_id, username)
-            accu_data.pop()
-            res = save_key(api_key, bin_id, username, accu_data)
-    else:
-        st.write("No data available to delete.")
-    
+    if 'message' in res:
+        st.error(res['message'])
     
 
 
