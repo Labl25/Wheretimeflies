@@ -57,6 +57,7 @@ elif authentication_status == None:
     st.stop()
 
 st.title('Where time flies')
+st.markdown("_An App designed to become more aware of your own daily activities_")
 
 #Inputs explanation
 st.subheader('Input categories')
