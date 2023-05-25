@@ -127,8 +127,8 @@ if run_today:
         df = pd.DataFrame(new_data, index = [date])
         st.dataframe(df)
         # Descriptive title and text for chart from user input dataframe
-        st.subheader('Pie chart of today')
-        st.text('Percentage of time spent in each category today')
+        st.subheader("Today's pie chart")
+        st.text("Today's activity overview in percentages")
         
         # Create a piechart with df as dataframe
         aggregated_data = df.drop('Day and month', axis=1).sum()
@@ -150,9 +150,8 @@ if run_saved:
         # Depict all saved data as df1 dataframe
         st.dataframe(df1) 
         #Descriptive title and text for chart from user input dataframe
-        st.subheader('Yearly graphical display')
-        st.text('Time spent for each category with latest input')
-    
+        st.subheader('Graphical overview')
+        st.text('Graphical overview of daily activity until today')
     #Create a barchart with older saved data (df4)
         chart_data = pd.DataFrame(df1)
         st.bar_chart(data= chart_data, x ='Day and month', 
