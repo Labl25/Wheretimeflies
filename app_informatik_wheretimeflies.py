@@ -168,10 +168,9 @@ if delete:
         st.dataframe(df1)
         
         if st.button("Delete Last Row"):
-            df1 = df1.drop(df1.index[-1], inplace=True)
-            accu_data = df1.to_dict(orient='records')
+            accu_data = load_key(api_key, bin_id, username)
+            accu_data.pop()
             res = save_key(api_key, bin_id, username, accu_data)
-            st.write("Last row deleted successfully.")
     else:
         st.write("No data available to delete.")
     
