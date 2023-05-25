@@ -156,7 +156,7 @@ if run_saved:
     
     st.dataframe(df1)
     
-    if st.button("Delete Selected"):
+    if st.button("Delete Selected", key = 'please'):
         df1 = df1[~df1.index.isin(selected_rows)]
         accu_data = df1.to_dict(orient='records')
         res = save_key(api_key, bin_id, username, accu_data)
@@ -169,7 +169,7 @@ if run_saved:
     
     st.dataframe(df1)
     
-    if st.button("Delete Selected"):
+    if st.button("Delete Selected",  key = 'pff'):
         df1 = df1[~df1.index.isin(selected_rows)]
         accu_data = df1.to_dict(orient='records')
         res = save_key(api_key, bin_id, username, accu_data)
