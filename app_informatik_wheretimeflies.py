@@ -172,6 +172,7 @@ if run_saved:
         accu_data.pop()
         res = save_key(api_key, bin_id, username, accu_data)
     # Show df1 dataframe
+    accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
     st.table(df1)
     
