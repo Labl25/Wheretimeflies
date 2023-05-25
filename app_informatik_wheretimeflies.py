@@ -143,26 +143,13 @@ if run_today:
  
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data)
-    selected_rows = []
+    df1 = DataFrame(accu_data)
+    selected_rows = st.multiselect("Select Rows", df1.index.tolist())
+    selected_data = df1.loc[selected_rows]
     
-    # Agregar una columna de selección con checkboxes
-    df1['Seleccionar'] = [False] * len(df1)
-    df1 = df1[['Seleccionar'] + df1.columns.tolist()]
-    
-    # Mostrar la tabla con checkboxes
-    selected_rows = st.checkbox("Seleccionar fila", key="select_all")
-    st.dataframe(df1)
-    
-    # Obtener las filas seleccionadas
-    selected_rows = df1[df1['Seleccionar']].index.tolist()
-    
-    # Botón para borrar las filas seleccionadas
-    if st.button("Borrar seleccionados"):
-        df1 = df1.drop(selected_rows)
-        accu_data = df1.drop(columns='Seleccionar').to_dict(orient='records')
-        res = save_key(api_key, bin_id, username, accu_data)
-        st.write("Filas borradas exitosamente.")
+    st.write("Selected Rows:")
+    df2 = st.dataframe(selected_data)
+   
     
      
     # Descriptive title and text for chart from user input dataframe
