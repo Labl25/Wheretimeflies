@@ -143,17 +143,18 @@ if run_today:
  
 if run_saved: 
     accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data)
-    inputs_to_delete = st.radio("Select input to delete", df1['Day and month'])
-    
-    delete = st.button("Delete")
-    if delete:
-        # Remove selected inputs from accu_data
-        accu_data = [data for data in accu_data if data['Day and month'] != selected_input]
-        res = save_key(api_key, bin_id, username, accu_data)
-        st.success("Selected input has been deleted.")
-    
+    df1 = pd.DataFrame(accu_data)    
     st.dataframe(df1)
+    selected_date = st.text_input("Enter the date to delete (YYYY-MM-DD):")
+   
+    
+    if st.button("Delete"):
+        # Remove selected date from accu_data
+        accu_data = [data for data in accu_data if data['Day and month'] != selected_date]
+        res = save_key(api_key, bin_id, username, accu_data)
+        st.success("Data for selected date has been deleted.")
+    
+    
     
     # Descriptive title and text for chart from user input dataframe
     st.subheader('Yearly graphical display')
