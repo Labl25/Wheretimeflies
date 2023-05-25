@@ -144,11 +144,21 @@ if run_today:
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    selected_rows = st.multiselect("Select Rows", df1.index.tolist())
-    selected_data = df1.loc[selected_rows]
+    selected_rows = []
+    checkboxes = []
+    for index, row in df1.iterrows():
+        checkbox = st.checkbox("", key=index)
+        checkboxes.append(checkbox)
+        if checkbox:
+            selected_rows.append(row)
     
-    st.write("Selected Rows:")
-    df2 = st.dataframe(selected_data)
+    st.dataframe(df1)
+    
+    if st.button("Delete Selected"):
+        df1 = df1[~df1.index.isin(selected_rows)]
+        accu_data = df1.to_dict(orient='records')
+        res = save_key(api_key, bin_id, username, accu_data)
+        st.write("Selected rows deleted successfully.")
    
     
      
