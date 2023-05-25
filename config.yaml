@@ -4,6 +4,9 @@ credentials:
       email: 
       name: Ana Lucia
       password: $2b$12$DnABTXW969Nz3JvlTswS4uXqEnfDjAWnrMiAlxqGPKZasA2GhYo6a
+    stekern:
+      name: Stefanie
+      password: $2b$12$S6OvHFnO9dhdn/PTdSNlQe6piq7IMJnqy1myAzbJrhf6HCjuR0W7m
     guest:
       name: Gast
       password: $2b$12$YwOKfcU9dEpSVcQjaJsQ2uNB4CIFwjmHK3eNftcinLzmW0LQ4ArTK
