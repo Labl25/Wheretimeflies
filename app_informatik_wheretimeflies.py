@@ -104,7 +104,7 @@ Col0, Col1, Col2= st.columns(3)
 # Show and submit button defined as run and show all data as run1      
 run_today = Col0.button("Show and submit today's data") 
 run_saved = Col1.button('Show all data', key = 'all_data')
-delete = Col2.button('Delete selected data', key = 'selected' )
+delete = Col2.button('Delete last input', key = 'last' )
 
 #Subheader of dataframe table
 st.subheader('Input data table')
