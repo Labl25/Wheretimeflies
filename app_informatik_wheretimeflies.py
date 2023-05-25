@@ -167,7 +167,13 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved:
-    # Show df4 dataframe
+    Col0= st.columns(1)       
+    delete = Col0.button("delete") 
+    if delete:
+        accu_data = load_key(api_key, bin_id, username)
+        accu_data.pop()
+        res = save_key(api_key, bin_id, username, accu_data)
+    # Show df1 dataframe
     st.table(df1)
     
     # Descriptive title and text for chart from user input dataframe
