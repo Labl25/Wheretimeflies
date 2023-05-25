@@ -1,12 +1,15 @@
 credentials:
   usernames:
     albl:
-      email: anlubelu@gmail.com
+      email: 
       name: Ana Lucia
-      password: $2b$10$fhN3u0ksnwJAy9iz13iVSeJKAMg3zOH7FPPJmQULYnKSVDv2Wgim.
+      password: $2b$12$DnABTXW969Nz3JvlTswS4uXqEnfDjAWnrMiAlxqGPKZasA2GhYo6a
     guest:
       name: Gast
-      password: $2b$12$tK8SbVmvMUakwq1ADl2sgOGoeQY6AcRsHSJhZc672.517Cg23kLZK # To be replaced with hashed password
+      password: $2b$12$YwOKfcU9dEpSVcQjaJsQ2uNB4CIFwjmHK3eNftcinLzmW0LQ4ArTK
+    guest1:
+      name: Gast1
+      password: $2b$12$3S/nUKxfG19Iut2YQB0m9elURrxw4P5a6AfG3Ozw7zI/qHR/NVFvG
 cookie:
   expiry_days: 30  # number of days until password is asked again
   key: JgDyEoKUNItM5prxo194jDeLYzVzmYE6 # Must be string, use https://randomkeygen.com/
