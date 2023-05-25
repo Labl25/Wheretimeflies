@@ -142,17 +142,12 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved: 
+    if st.button("Delete")
     accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data)    
-    st.dataframe(df1)
-    selected_date = st.text_input("Enter the date to delete (YYYY-MM-DD):")
-   
+    df1 = pd.DataFrame(accu_data) 
+    accu_data.pop()
+    res = save_key(api_key, bin_id, username, accu_data)
     
-    if st.button("Delete"):
-        # Remove selected date from accu_data
-        accu_data = [data for data in accu_data if data['Day and month'] != selected_date]
-        res = save_key(api_key, bin_id, username, accu_data)
-        st.success("Data for selected date has been deleted.")
     
     
     
