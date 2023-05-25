@@ -152,7 +152,7 @@ if run_today:
         #accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
         res = save_key(api_key, bin_id, username, accu_data)
         
-        df = pd.DataFrame(new_data)
+        df = pd.DataFrame(new_data, index = [date])
         st.table(df)
         # Descriptive title and text for chart from user input dataframe
         st.subheader('Pie chart of today')
