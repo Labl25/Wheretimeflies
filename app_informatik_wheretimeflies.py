@@ -152,7 +152,7 @@ if run_today:
         res = save_key(api_key, bin_id, username, address_list)
         
         df = pd.DataFrame(new_data)
-        df1 = pd:DatFrame(accu_data)
+        df1 = pd.DatFrame(accu_data)
         st.table(df)
         # Descriptive title and text for chart from user input dataframe
         st.subheader('Pie chart of today')
