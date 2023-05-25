@@ -149,7 +149,7 @@ if run_saved:
     df1 = pd.DataFrame(accu_data)
     st.dataframe(df1)
     if df1 is None:
-        st.write('No data available')
+        st.warning('No data available')
     #Descriptive title and text for chart from user input dataframe
     else: 
         st.subheader('Yearly graphical display')
