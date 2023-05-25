@@ -8,6 +8,7 @@ Created on Mon Mar 20 18:32:14 2023
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from streamlit_aggrid import AgGrid
 
 from geocode import get_coordinates
 from jsonbin import load_key, save_key
@@ -144,30 +145,15 @@ if run_today:
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    selected_rows = []
-    checkboxes = []
-    for index, row in df1.iterrows():
-        checkbox_placeholder = st.empty()
-        checkbox = checkbox_placeholder.checkbox("", key=index)
-        checkboxes.append(checkbox)
-        if checkbox:
-            selected_rows.append(row)
-        checkbox_placeholder.empty()  # Clear the placeholder after rendering the checkbox
     
-    st.dataframe(df1)
+    grid_response = AgGrid(df1, editable=False, enable_pagination=True, fit_columns_on_grid_load=True, key='grid')
+    selected_rows = grid_response['selected_rows']
     
-    if st.button("Delete Selected", key = 'please'):
-        df1 = df1[~df1.index.isin(selected_rows)]
+    if st.button("Delete Selected"):
+        df1 = df1.drop(selected_rows.index)
         accu_data = df1.to_dict(orient='records')
         res = save_key(api_key, bin_id, username, accu_data)
-        st.write("Selected rows deleted successfully.")    
-    for index, row in df1.iterrows():
-        checkbox = st.checkbox("", key=index)
-        checkboxes.append(checkbox)
-        if checkbox:
-            selected_rows.append(row)
-    
-    st.dataframe(df1)
+        st.write("Selected rows deleted successfully.")
     
   
    
