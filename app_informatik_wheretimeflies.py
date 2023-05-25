@@ -59,17 +59,19 @@ elif authentication_status == None:
 st.title('Where time flies')
 st.markdown("_An App designed for you to become more aware of your own daily activities_")
 
+with st.sidebar:
+    st.[information]
 #Inputs explanation
-st.subheader('Input categories')
-st.markdown('**Input explanation**')
-st.markdown('_Sleep hours_: Time spent actually sleeping.')
-st.markdown('_Time spent eating_: Time spent actually eating regardless of this beeing done while sitting or standing.')
-st.markdown('_Time spent sitting_: Time spent sitting, regardless of it being done while working or doing a hobby.')
-st.markdown('_Time spent walking_: Time spent only walking (from and to work, with your dog or just because).')
-st.markdown('_Time spent working out_: Time spent running, playing a sport or doing a workout (warm ups must be included).')
-st.markdown('_Time spent on hobby_: Time spent doing a non high active free-time activity like cooking, reading, scrolling through social media and such.')
-st.markdown('Every category can be left blank. However, the total of entered hours cannot exceed 24h.')
-st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
+    st.subheader('Input categories')
+    st.markdown('**Input description**')
+    st.markdown('_Sleep hours_: Time spent actually sleeping.')
+    st.markdown('_Time spent eating_: Time spent actually eating regardless of this beeing done while sitting or standing.')
+    st.markdown('_Time spent sitting_: Time spent sitting, regardless of it being done while working or doing a hobby.')
+    st.markdown('_Time spent walking_: Time spent only walking (from and to work, with your dog or just because).')
+    st.markdown('_Time spent working out_: Time spent running, playing a sport or doing a workout (warm ups must be included).')
+    st.markdown('_Time spent on hobby_: Time spent doing a non high active free-time activity like cooking, reading, scrolling through social media and such.')
+    st.markdown('Every category can be left blank. However, the total of entered hours cannot exceed 24h.')
+    st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
 
 
 # Create input columns
