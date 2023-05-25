@@ -179,7 +179,7 @@ with tab3:
 with tab4:
     Col0, Col2 = st.columns(2)
     Col0 = Col0.date_input(label = "Date")
-    Col2 = Col2.text_area(label = "Today's notes)
+    Col2 = Col2.text_area(label = "Today's notes")
 
 
 
