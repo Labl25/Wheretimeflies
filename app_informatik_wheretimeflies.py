@@ -145,7 +145,7 @@ if run_today:
  
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
-    df1 = pd.DataFrame(accu_data)
+    df1 = pd.DataFrame(accu_data, index = False)
     st.dataframe(df1)
     #Descriptive title and text for chart from user input dataframe
     st.subheader('Yearly graphical display')
