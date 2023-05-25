@@ -109,30 +109,6 @@ run_saved = Col1.button('Show all data', key = 'all_data')
 #Subheader of dataframe table
 st.subheader('Input data table')
 
-# Dataframe
-#df = pd.DataFrame({'Day and month': date, 
-                   #'Sleep hours': sleep,
-                   #'Time spent eating': food,
-                   #'Time spent sitting': sitting,
-                   #'Time spent walking': walking,
-                   #'Time spent working out': workout,
-                   #'Time spent on hobby': hobby}, 
-                   #index = [date]
-                   #)             
-
-# Df2 as table from df1, which adds every new user input to the datatable
-#df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
-
-# Stop date duplications. Only the last date input will be shown in dataframe
-#df1 = df.drop_duplicates(subset=['Day and month'], keep='last')  
- 
-# Redefine df1 and df2 ad df3    
-#df2 = pd.DataFrame(df1) 
-# read in existing and saved data
-#df3 = pd.read_json(DATA_FILE)
-#df4 = load_data(api_key, bin_id)
-#df4 = load_key(api_key, bin_id, username)
-
 #st.write(df4)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
@@ -168,19 +144,16 @@ if run_today:
 if run_saved: 
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    
-    # Show df1 dataframe with checkboxes to select inputs for deletion
-    st.dataframe(df1)
     inputs_to_delete = st.multiselect("Select inputs to delete", df1.index)
     
-    if st.button("Delete"):
+    delete = st.button("Delete")
+    if delete:
         # Remove selected inputs from accu_data
         accu_data = [data for data in accu_data if data['Day and month'] not in inputs_to_delete]
         res = save_key(api_key, bin_id, username, accu_data)
         st.success("Selected inputs have been deleted.")
     
-    # Show updated df1 dataframe
-    df1 = pd.DataFrame(accu_data)
+    
     st.dataframe(df1)
     st.table(df1)
     
