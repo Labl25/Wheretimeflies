@@ -143,7 +143,7 @@ if run_today:
  
 if run_saved:
     accu_data = load_key(api_key, bin_id, username)
-    df1 = DataFrame(accu_data)
+    df1 = pd.DataFrame(accu_data)
     selected_rows = st.multiselect("Select Rows", df1.index.tolist())
     selected_data = df1.loc[selected_rows]
     
