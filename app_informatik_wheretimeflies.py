@@ -59,8 +59,6 @@ elif authentication_status == None:
 st.title('Where time flies')
 st.markdown("_An App designed for you to become more aware of your own daily activities_")
 
-with st.sidebar:
-    st.[information]
 #Inputs explanation
     st.subheader('Input categories')
     st.markdown('**Input description**')
