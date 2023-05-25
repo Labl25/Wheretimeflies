@@ -1,7 +1,6 @@
 import requests
 
-BIN_API_URL = https://api.jsonbin.io/v3/b/646212ee9d312622a35ea4ca
-
+BIN_API_URL = r'https://api.jsonbin.io/v3/b'
 def load_data(api_key, bin_id):
     """
     Load entire bin
