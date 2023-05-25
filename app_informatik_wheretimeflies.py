@@ -151,6 +151,7 @@ if run_saved:
             accu_data.pop(selected_index)
             res = save_key(api_key, bin_id, username, accu_data)
             st.write("User input deleted.")
+            st.dataframe(pd.DataFrame(accu_data))
     
      
     # Descriptive title and text for chart from user input dataframe
