@@ -103,10 +103,11 @@ run_today = Col0.button("Submit today's data")
 run_saved = Col1.button('Show all data', key = 'all_data')
 delete = Col2.button('Delete last input', key = 'last_input' )
 
-#Subheader of dataframe table
-st.subheader('Input overview')
+
 
 if run_today:
+    #Subheader of dataframe table
+    st.subheader("Today's overview")
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
         
@@ -140,6 +141,8 @@ if run_today:
         
 #See all saved data (all inputs) as df1 
 if run_saved:
+    #Subheader of dataframe table
+    st.subheader('Daily overview')
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
     #Warning if there is no data saved from previous days
@@ -150,8 +153,8 @@ if run_saved:
         # Depict all saved data as df1 dataframe
         st.dataframe(df1) 
         #Descriptive title and text for chart from user input dataframe
-        st.subheader('Graphical overview')
-        st.text('Graphical overview of daily activity until today')
+        st.subheader('Graphical summary')
+        st.text('Graphical overview of daily activity until today in hours')
     #Create a barchart with older saved data (df4)
         chart_data = pd.DataFrame(df1)
         st.bar_chart(data= chart_data, x ='Day and month', 
