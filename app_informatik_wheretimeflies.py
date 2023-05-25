@@ -161,7 +161,8 @@ if run_saved:
                      'Time spent working out',
                      'Time spent on hobby']
                  )
-    
+    if df1 = empty:
+        st.write('No data available')
 if delete:
     accu_data = load_key(api_key, bin_id, username)
     accu_data.pop()
