@@ -141,17 +141,28 @@ if run_today:
     else:
         st.warning("A day does not have more than 24 hours!") 
  
-if run_saved: 
+if run_saved:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    selected_row_index = st.empty()
+    selected_rows = []
+    
+    # Agregar una columna de selección con checkboxes
+    df1['Seleccionar'] = [False] * len(df1)
+    df1 = df1[['Seleccionar'] + df1.columns.tolist()]
+    
+    # Mostrar la tabla con checkboxes
+    selected_rows = st.checkbox("Seleccionar fila", key="select_all")
     st.dataframe(df1)
     
-    selected_index = selected_row_index.checkbox("Select Row")
-    if selected_index:
-        selected_row = df1.iloc[selected_index]
-        st.write("Selected Row:")
-        st.write(selected_row)
+    # Obtener las filas seleccionadas
+    selected_rows = df1[df1['Seleccionar']].index.tolist()
+    
+    # Botón para borrar las filas seleccionadas
+    if st.button("Borrar seleccionados"):
+        df1 = df1.drop(selected_rows)
+        accu_data = df1.drop(columns='Seleccionar').to_dict(orient='records')
+        res = save_key(api_key, bin_id, username, accu_data)
+        st.write("Filas borradas exitosamente.")
     
      
     # Descriptive title and text for chart from user input dataframe
