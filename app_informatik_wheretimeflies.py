@@ -144,14 +144,14 @@ if run_today:
 if run_saved: 
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
+    selected_row_index = st.empty()
     st.dataframe(df1)
-    if st.button("Delete"):
-        selected_index = st.number_input("Enter the index of the user input to delete:", min_value=0, max_value=len(accu_data)-1, step=1)
-        if st.button("Confirm Delete"):
-            accu_data.pop(selected_index)
-            res = save_key(api_key, bin_id, username, accu_data)
-            st.write("User input deleted.")
-            st.dataframe(pd.DataFrame(accu_data))
+    
+    selected_index = selected_row_index.checkbox("Select Row")
+    if selected_index:
+        selected_row = df1.iloc[selected_index]
+        st.write("Selected Row:")
+        st.write(selected_row)
     
      
     # Descriptive title and text for chart from user input dataframe
