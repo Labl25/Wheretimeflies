@@ -104,7 +104,7 @@ run_saved = Col1.button('Show all data', key = 'all_data')
 delete = Col2.button('Delete last input', key = 'last_input' )
 
 #Subheader of dataframe table
-st.subheader('Imput overview')
+st.subheader('Input overview')
 
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
