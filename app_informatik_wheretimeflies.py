@@ -163,10 +163,9 @@ if run_saved:
  if delete:
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-     if not df1.empty:
+    if not df1.empty:
         st.dataframe(df1)
         if st.button("Delete Last Row"):
-            
             df1 = df1.drop(df1.index[-1])
             accu_data = df1.to_dict(orient='records')
             res = save_key(api_key, bin_id, username, accu_data)
