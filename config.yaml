@@ -12,7 +12,7 @@ credentials:
       password: $2b$12$qmNY2sLY5eQzoswjhgeMwO5OB2pH.WwegLBRxIaHL2owqckt9ctqu
     guest1:
       name: Gast1
-      password: $2b$12$3S/nUKxfG19Iut2YQB0m9elURrxw4P5a6AfG3Ozw7zI/qHR/NVFvG
+      password: $2b$12$nZWG06pzU/w8kzw2A27p3.Ssn2oT1o4D0.iUHe4XWm/rkYC7yhFmW
 cookie:
   expiry_days: 30  # number of days until password is asked again
   key: JgDyEoKUNItM5prxo194jDeLYzVzmYE6 # Must be string, use https://randomkeygen.com/
