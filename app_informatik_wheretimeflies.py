@@ -56,9 +56,7 @@ elif authentication_status == None:
     st.warning('Please enter your username and password')
     st.stop()
 
-
-
-tab1, tab2, tab3 = st.tabs(["Where time flies", "Input descriptions", "Activity input"])
+tab1, tab2, tab3, tab4 = st.tabs(["Where time flies", "Input descriptions", "Activity input", "Daily notes"])
 
 with tab1:    
     st.title('Where time flies')
@@ -178,7 +176,10 @@ with tab3:
             st.error(res['message'])
     
 
-
+with tab4:
+    Col0, Col2 = st.columns(2)
+    Col0 = Col0.date_input()
+    Col2 = Col2.text_area()
 
 
 
