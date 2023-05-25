@@ -155,19 +155,19 @@ if run_saved:
     
      
     # Descriptive title and text for chart from user input dataframe
-    st.subheader('Yearly graphical display')
-    st.text('Time spent for each category with latest input')
+    #st.subheader('Yearly graphical display')
+    #st.text('Time spent for each category with latest input')
     
     # Create a barchart with older saved data (df4)
-    chart_data = pd.DataFrame(df1)
-    st.bar_chart(data= chart_data, x ='Day and month', 
-                 y = ['Sleep hours',
-                     'Time spent eating',
-                     'Time spent sitting',
-                     'Time spent walking',
-                     'Time spent working out',
-                     'Time spent on hobby']
-                 )
+    #chart_data = pd.DataFrame(df1)
+    #st.bar_chart(data= chart_data, x ='Day and month', 
+                # y = ['Sleep hours',
+                    # 'Time spent eating',
+                    # 'Time spent sitting',
+                    # 'Time spent walking',
+                    # 'Time spent working out',
+                     #'Time spent on hobby']
+                 #)
 
  
     
