@@ -185,7 +185,7 @@ with tab4:
     Show_older_notes = st.button(" Show older notes", key = "show_older")
                                  
     if Submit:
-        new_notes = {'Date': Col0, 
+        new_notes = {'Date': str(Col0), 
                    "Today's notes": Col2,
                    } 
         #load data to jsonbin             
