@@ -144,6 +144,8 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved:
+    if df1.empty:
+        st.write('No data available')
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data, index = False)
     st.dataframe(df1)
@@ -161,8 +163,7 @@ if run_saved:
                      'Time spent working out',
                      'Time spent on hobby']
                  )
-    if df1.empty:
-        st.write('No data available')
+    
 if delete:
     accu_data = load_key(api_key, bin_id, username)
     accu_data.pop()
