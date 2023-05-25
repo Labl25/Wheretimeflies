@@ -147,11 +147,11 @@ if run_saved:
     
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    st.dataframe(df1)
     if df1 is None:
         st.warning('No data available')
     #Descriptive title and text for chart from user input dataframe
     else: 
+        st.dataframe(df1) 
         st.subheader('Yearly graphical display')
         st.text('Time spent for each category with latest input')
     
