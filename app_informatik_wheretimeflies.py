@@ -165,15 +165,23 @@ if run_today:
     else:
         st.warning("A day does not have more than 24 hours!") 
  
-if run_saved:       
-    delete = st.button("delete") 
-    if delete:
-        accu_data = load_key(api_key, bin_id, username)
-        accu_data.pop()
-        res = save_key(api_key, bin_id, username, accu_data)
-    # Show df1 dataframe
+if run_saved: 
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
+    
+    # Show df1 dataframe with checkboxes to select inputs for deletion
+    st.dataframe(df1)
+    inputs_to_delete = st.multiselect("Select inputs to delete", df1.index)
+    
+    if st.button("Delete"):
+        # Remove selected inputs from accu_data
+        accu_data = [data for data in accu_data if data['Day and month'] not in inputs_to_delete]
+        res = save_key(api_key, bin_id, username, accu_data)
+        st.success("Selected inputs have been deleted.")
+    
+    # Show updated df1 dataframe
+    df1 = pd.DataFrame(accu_data)
+    st.dataframe(df1)
     st.table(df1)
     
     # Descriptive title and text for chart from user input dataframe
