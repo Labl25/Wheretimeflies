@@ -9,7 +9,7 @@ credentials:
       password: $2b$12$S6OvHFnO9dhdn/PTdSNlQe6piq7IMJnqy1myAzbJrhf6HCjuR0W7m
     guest:
       name: Gast
-      password: $2b$12$YwOKfcU9dEpSVcQjaJsQ2uNB4CIFwjmHK3eNftcinLzmW0LQ4ArTK
+      password:$2b$12$qmNY2sLY5eQzoswjhgeMwO5OB2pH.WwegLBRxIaHL2owqckt9ctqu
     guest1:
       name: Gast1
       password: $2b$12$3S/nUKxfG19Iut2YQB0m9elURrxw4P5a6AfG3Ozw7zI/qHR/NVFvG
