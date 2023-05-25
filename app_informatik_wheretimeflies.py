@@ -150,7 +150,7 @@ if run_today:
         accu_data.append(new_data) 
         df1 = pd.DataFrame(accu_data)
         accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
-        res = save_key(api_key, bin_id, username, address_list)
+        res = save_key(api_key, bin_id, username, accu_data)
         
         df = pd.DataFrame(new_data)
         st.table(df)
