@@ -144,7 +144,7 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved:
-    if accu_data is None:
+    if df1 is None:
         st.write('No data available')
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data, index = False)
