@@ -22,8 +22,6 @@ def Zählung_Dictionary():
         Dictionary[key]=st.session_state[key]
     return Dictionary
 
-
-DATA_FILE = "saved_data.json"
 st.set_page_config(
                     page_title="App_Informatik",
                     page_icon="running",
@@ -73,7 +71,6 @@ st.markdown('Every category can be left blank. However, the total of entered hou
 st.markdown('_Remaining time_ is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
 
 
-
 # Create input columns
 Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7 = st.columns(8) 
 date = Col0.date_input(label = "Day and month").strftime("%Y-%m-%d")
@@ -99,17 +96,16 @@ with Col7:
 if active < 0.35: 
     st.warning("WHO recomends an adult person to be active for at least for 21 min per day") 
     
-# Arrange 2 buttons into 2 columns
+# Arrange 3 buttons into 3 columns
 Col0, Col1, Col2= st.columns(3) 
-# Show and submit button defined as run and show all data as run1      
-run_today = Col0.button("Show and submit today's data") 
+# Show and submit button defined as run and show all data as run1 as well as delete      
+run_today = Col0.button("Submit today's data") 
 run_saved = Col1.button('Show all data', key = 'all_data')
-delete = Col2.button('Delete last input', key = 'last' )
+delete = Col2.button('Delete last input', key = 'last_input' )
 
 #Subheader of dataframe table
 st.subheader('Input data table')
 
-#st.write(df4)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
@@ -121,14 +117,13 @@ if run_today:
                    'Time spent walking': walking,
                    'Time spent working out': workout,
                    'Time spent on hobby': hobby} 
-                     
+        #load data to jsonbin             
         accu_data = load_key(api_key, bin_id, username)
         accu_data.append(new_data)
-        #accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
         res = save_key(api_key, bin_id, username, accu_data)
         if 'message' in res:
             st.error(res['message'])
-        
+        #new_data to df dataframe
         df = pd.DataFrame(new_data, index = [date])
         st.dataframe(df)
         # Descriptive title and text for chart from user input dataframe
@@ -142,16 +137,19 @@ if run_today:
         
     else:
         st.warning("A day does not have more than 24 hours!") 
- 
+        
+#See all saved data (all inputs) as df1 
 if run_saved:
-    
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
+    #Warning if there is no data saved from previous days
     if len(df1) == 0:
         st.warning('No data available')
-    #Descriptive title and text for chart from user input dataframe
+    
     else: 
+        # Depict all saved data as df1 dataframe
         st.dataframe(df1) 
+        #Descriptive title and text for chart from user input dataframe
         st.subheader('Yearly graphical display')
         st.text('Time spent for each category with latest input')
     
@@ -165,7 +163,8 @@ if run_saved:
                      'Time spent working out',
                      'Time spent on hobby']
                  )
-    
+        
+#Delete last input    
 if delete:
     accu_data = load_key(api_key, bin_id, username)
     accu_data.pop()
