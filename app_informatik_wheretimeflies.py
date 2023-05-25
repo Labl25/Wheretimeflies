@@ -147,8 +147,7 @@ if run_today:
                    'Time spent on hobby': hobby} 
                      
         accu_data = load_key(api_key, bin_id, username)
-        accu_data.append(new_data) 
-        df1 = pd.DataFrame(accu_data)
+        accu_data.append(new_data)
         #accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
         res = save_key(api_key, bin_id, username, accu_data)
         
@@ -173,6 +172,7 @@ if run_saved:
         accu_data.pop()
         res = save_key(api_key, bin_id, username, accu_data)
     # Show df1 dataframe
+    df1 = pd.DataFrame(accu_data)
     st.table(df1)
     
     # Descriptive title and text for chart from user input dataframe
