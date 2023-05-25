@@ -110,27 +110,26 @@ run_saved = Col1.button('Show all data', key = 'all_data')
 st.subheader('Input data table')
 
 # Dataframe
-df = pd.DataFrame({'Day and month': date, 
-                   'Sleep hours': sleep,
-                   'Time spent eating': food,
-                   'Time spent sitting': sitting,
-                   'Time spent walking': walking,
-                   'Time spent working out': workout,
-                   'Time spent on hobby': hobby}, 
-                   index = [date]
-                   )             
+#df = pd.DataFrame({'Day and month': date, 
+                   #'Sleep hours': sleep,
+                   #'Time spent eating': food,
+                   #'Time spent sitting': sitting,
+                   #'Time spent walking': walking,
+                   #'Time spent working out': workout,
+                   #'Time spent on hobby': hobby}, 
+                   #index = [date]
+                   #)             
 
 # Df2 as table from df1, which adds every new user input to the datatable
 #df1 = pd.concat([st.session_state.mdf, df], ignore_index= False) 
-df1 = df
 
 # Stop date duplications. Only the last date input will be shown in dataframe
-df2 = df1.drop_duplicates(subset=['Day and month'], keep='last')  
+#df1 = df.drop_duplicates(subset=['Day and month'], keep='last')  
  
 # Redefine df1 and df2 ad df3    
-df3 = pd.DataFrame(df2) 
+#df2 = pd.DataFrame(df1) 
 # read in existing and saved data
-df4 = pd.read_json(DATA_FILE)
+#df3 = pd.read_json(DATA_FILE)
 #df4 = load_data(api_key, bin_id)
 #df4 = load_key(api_key, bin_id, username)
 
@@ -138,22 +137,23 @@ df4 = pd.read_json(DATA_FILE)
 if run_today:
     # Only user inputs with a total of max 24h will be added to the dataframe, otherwise warning will pop up.  
     if total_hours <= 24:
-        # Check if df4 is empty or not
-        if len(df4) == 0:
-            # If it's empty, assign the new input data to it
-            df4 = df3.copy()
-        else:
-            # If it's not empty, append the new input data to it while dropping duplicates
-            df4 = pd.concat([df4, df3], ignore_index=True)
-            df4 = df4.drop_duplicates(subset= ['Day and month'], keep='last')
         
-        # Save dataframe as json
-        #df4.to_json(DATA_FILE, orient='records')
-        #save_key(api_key, bin_id, username, df4)
-        df4 = save_data(api_key, bin_id, data)
-        # Show dataframe df = User input
-        st.dataframe(df)
+        new_data = {'Day and month': date, 
+                   'Sleep hours': sleep,
+                   'Time spent eating': food,
+                   'Time spent sitting': sitting,
+                   'Time spent walking': walking,
+                   'Time spent working out': workout,
+                   'Time spent on hobby': hobby} 
+                     
+        accu_data = load_key(api_key, bin_id, username)
+        accu_data.append(new_data) 
+        accu_data = accu_data.drop_duplicates(subset= ['Day and month'], keep='last')
+        res = save_key(api_key, bin_id, username, address_list)
         
+        df = pd.DataFrame(new_data)
+        df1 = pd:DatFrame(accu_data)
+        st.table(df)
         # Descriptive title and text for chart from user input dataframe
         st.subheader('Pie chart of today')
         st.text('Percentage of time spent in each category today')
@@ -168,14 +168,14 @@ if run_today:
  
 if run_saved:
     # Show df4 dataframe
-    st.dataframe(df4)
+    st.table(df1)
     
     # Descriptive title and text for chart from user input dataframe
     st.subheader('Yearly graphical display')
     st.text('Time spent for each category with latest input')
     
     # Create a barchart with older saved data (df4)
-    chart_data = pd.DataFrame(df4)
+    chart_data = pd.DataFrame(df1)
     st.bar_chart(data= chart_data, x ='Day and month', 
                  y = ['Sleep hours',
                      'Time spent eating',
