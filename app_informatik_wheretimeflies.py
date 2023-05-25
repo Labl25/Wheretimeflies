@@ -182,7 +182,7 @@ with tab4:
     Col2 = Col2.text_area(label = "Today's notes")
     
     Submit = st.button("Submit", key = "sub_notes")
-    Show_older_notes = st.button(" Show older notes", key = "show_older)
+    Show_older_notes = st.button(" Show older notes", key = "show_older")
                                  
     if Submit:
         new_notes = {'Date': Col0, 
