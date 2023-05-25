@@ -172,8 +172,8 @@ if delete:
             accu_data = df1.to_dict(orient='records')
             res = save_key(api_key, bin_id, username, accu_data)
             st.write("Last row deleted successfully.")
-        else:
-            st.write("No data available to delete.")
+    else:
+        st.write("No data available to delete.")
     
     
 
