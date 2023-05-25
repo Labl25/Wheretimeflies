@@ -148,6 +148,7 @@ if run_today:
         # Save dataframe as json
         #df4.to_json(DATA_FILE, orient='records')
         save_key(api_key, bin_id, username, df4)
+        save_data(api_key, bin_id, data)
         # Show dataframe df = User input
         st.dataframe(df)
         
