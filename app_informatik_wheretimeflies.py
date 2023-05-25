@@ -148,7 +148,7 @@ if run_today:
                      
         accu_data = load_key(api_key, bin_id, username)
         accu_data.append(new_data) 
-        df1 = pd.DatFrame(accu_data)
+        df1 = pd.DataFrame(accu_data)
         accu_data = df1.drop_duplicates(subset= ['Day and month'], keep='last')
         res = save_key(api_key, bin_id, username, address_list)
         
