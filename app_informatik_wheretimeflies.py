@@ -167,7 +167,7 @@ if run_today:
         st.warning("A day does not have more than 24 hours!") 
  
 if run_saved:       
-    #delete = st.button("delete") 
+    delete = st.button("delete") 
     if delete:
         accu_data = load_key(api_key, bin_id, username)
         accu_data.pop()
