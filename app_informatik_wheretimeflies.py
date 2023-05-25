@@ -147,7 +147,7 @@ if run_saved:
     
     accu_data = load_key(api_key, bin_id, username)
     df1 = pd.DataFrame(accu_data)
-    if df1 is None:
+    if len(df1) == 0:
         st.warning('No data available')
     #Descriptive title and text for chart from user input dataframe
     else: 
