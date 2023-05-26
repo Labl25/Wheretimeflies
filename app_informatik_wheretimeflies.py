@@ -56,7 +56,7 @@ elif authentication_status == None:
     st.warning('Please enter your username and password')
     st.stop()
 
-tab1, tab2, tab3, tab4 = st.tabs(["Where time flies", "Input descriptions", "Activity input", "Daily notes"])
+tab1, tab2, tab3 = st.tabs(["Where time flies", "Input descriptions", "Activity input"])
 
 with tab1:    
     st.title('Where time flies')
@@ -176,29 +176,7 @@ with tab3:
             st.error(res['message'])
     
 
-with tab4:
-    Col0, Col2 = st.columns(2)
-    Col0 = Col0.date_input(label = "Date")
-    Col2 = Col2.text_area(label = "Today's notes")
-    
-    Submit = st.button("Submit", key = "sub_notes")
-    Show_older_notes = st.button(" Show older notes", key = "show_older")
-                                 
-    if Submit:
-        new_notes = {'Date': str(Col0), 
-                   "Today's notes": Col2,
-                   } 
-        #load data to jsonbin             
-        accu_notes = load_key(api_key, bin_id, username)
-        accu_notes = [new_notes]
-        res = save_key(api_key, bin_id, username, accu_notes)
-        if 'message' in res:
-            st.error(res['message'])
-        #new_data to df dataframe
-    if Show_older_notes:
-        accu_notes = load_key(api_key, bin_id, username)
-        df2 = pd.DataFrame(accu_notes, index = [str(Col0)])
-        st.dataframe(df2)
+
 
 
 
