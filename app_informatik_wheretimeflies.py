@@ -60,10 +60,10 @@ tab1, tab2, tab3 = st.tabs(["Where time flies", "Input descriptions", "Activity 
 
 with tab1:    
     st.title('Where time flies')
-    st.markdown("_An App designed for you to become more aware of your own daily activities_")
+    st.markdown("_An App designed for you to become more aware of your own daily activities._")
 #Inputs explanation
 with tab2:
-    st.markdown('**Input description**')
+    st.markdown('**Input descriptions**')
     st.markdown('_Sleep hours_: Time spent actually sleeping.')
     st.markdown('_Time spent eating_: Time spent actually eating regardless of this beeing done while sitting or standing.')
     st.markdown('_Time spent sitting_: Time spent sitting, regardless of it being done while working or doing a hobby.')
