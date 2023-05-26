@@ -190,7 +190,7 @@ with tab4:
                    } 
         #load data to jsonbin             
         accu_notes = load_key(api_key, bin_id, username)
-        accu_notes.append(new_notes)
+        accu_notes = [new_notes]
         res = save_key(api_key, bin_id, username, accu_notes)
         if 'message' in res:
             st.error(res['message'])
