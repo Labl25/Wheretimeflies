@@ -197,7 +197,7 @@ with tab4:
         #new_data to df dataframe
     if Show_older_notes:
         accu_notes = load_key(api_key, bin_id, username)
-        df2 = pd.DataFrame(accu_notes, index = [date])
+        df2 = pd.DataFrame(accu_notes, index = [str(Col0)])
         st.dataframe(df2)
 
 
