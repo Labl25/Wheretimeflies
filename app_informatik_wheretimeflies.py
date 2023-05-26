@@ -64,13 +64,14 @@ with tab1:
 #Inputs explanation
 with tab2:
     st.markdown('**Input descriptions**')
+    st.markdown('Every category can be left blank. However, the total of entered hours cannot exceed 24h.')
+    
     st.markdown('**_Sleep hours_**: Time spent actually sleeping.')
     st.markdown('**_Time spent eating_**: Time spent actually eating regardless of this beeing done while sitting or standing.')
-    st.markdown('**_Time spent sitting_**: Time spent sitting, regardless of it being done while working or doing a hobby.')
-    st.markdown('**_Time spent walking_**: Time spent only walking (from and to work, with your dog or just because).')
+    st.markdown('**_Time spent sitting_**: Time spent :red[**sitting**] while working or studying.')
+    st.markdown('**_Time spent walking_**: Time spent :red[**walking**] from and to work, with your dog or just because. The working hours at a standing desk can also be included here.')
     st.markdown('**_Time spent working out_**: Time spent doing a task of :red[**high activity**] like running, playing a sport, doing a workout (warm ups are included) or even while working.')
     st.markdown('**_Time spent on hobby_**: Time spent doing a :red[**low impact free-time activity**] like cooking, reading, scrolling through social media and such.')
-    st.markdown('Every category can be left blank. However, the total of entered hours cannot exceed 24h.')
     st.markdown('**_Remaining time_** is here a as guide to not threspass the 24h per day limit (_entered hours_ <= 24h).')
 
 with tab3:
