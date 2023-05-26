@@ -56,7 +56,7 @@ elif authentication_status == None:
     st.warning('Please enter your username and password')
     st.stop()
 
-tab1, tab2, tab3 = st.tabs(["Where time flies", "Input descriptions", "Activity input"])
+tab1, tab2, tab3 = st.tabs(["Where time flies", " Activity input descriptions", "Activity tracker"])
 
 with tab1:    
     st.title('Where time flies')
